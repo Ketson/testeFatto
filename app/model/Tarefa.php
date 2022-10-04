@@ -49,6 +49,7 @@ class Tarefa {
         $where = "id = $id";
         return $this->mysql->atualizar($tarefa,$where);
     }
+    
 }
 
 ?>

@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `banco`.`tarefas` (
   `nomeTarefa` VARCHAR(45) NOT NULL,
   `custo` VARCHAR(45) NOT NULL,
   `data` DATE NOT NULL,
-  `ordemApresentacao` VARCHAR(45) NULL,
+  `ordemApresentacao` INT NULL DEFAULT '0',
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

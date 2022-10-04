@@ -18,9 +18,12 @@ $tarefas = $tarefaModel->buscarTodasTarefas();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/8130779589.js" crossorigin="anonymous"></script>
+
     <title>Listagem das Tarefas</title>
 </head>
 
@@ -40,11 +43,11 @@ $tarefas = $tarefaModel->buscarTodasTarefas();
     </nav>
     <div class="container">
 
-        <div class="row ">
+        <div class="row">
             <div class="col-12 pt-3">
                 <?php include('./components/alerts.php') ?>
-                
-                <div class="card ">
+
+                <div class="card">
                     <div class="card-header">
                         <div class="row">
                             <div class="col-9">
@@ -67,7 +70,7 @@ $tarefas = $tarefaModel->buscarTodasTarefas();
 
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="sortable">
 
 
                                 <?php foreach ($tarefas as $tarefa) { ?>
@@ -84,14 +87,17 @@ $tarefas = $tarefaModel->buscarTodasTarefas();
                                                 <div class="btn-group" role="group" aria-label="Exemplo básico">
                                                     <a class="btn btn-primary btn-sm" href="" data-toggle="modal" data-target="#editar<?= $tarefa['id'] ?>"><i class="fas fa-user-edit"></i></a>
                                                     <a href="../action/excluirTarefa.php?id=<?php echo $tarefa['id'] ?>" class="btn btn-danger btn-sm " onclick="return confirm('Deseja excluir essa tarefa?');"><i class="far fa-trash-alt"></i></a>
-
                                                 </div>
-
+                                                <div class="btn-group" role="group" aria-label="Second group">
+                                                    <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-long-arrow-alt-up"></i></button>
+                                                    <a class="btn btn-secondary btn-sm"><i class="fas fa-long-arrow-alt-down"></i></a>
+                                                </div>
                                             </td>
                                         </tr>
 
 
                                     <?php } else { ?>
+
                                         <tr>
                                             <td><?= $tarefa['id'] ?></td>
                                             <td><?= $tarefa['nomeTarefa'] ?></td>
@@ -103,7 +109,11 @@ $tarefas = $tarefaModel->buscarTodasTarefas();
                                                 <div class="btn-group" role="group" aria-label="Exemplo básico">
                                                     <a class="btn btn-primary btn-sm" href="" data-toggle="modal" data-target="#editar<?= $tarefa['id'] ?>"><i class="fas fa-user-edit"></i></a>
                                                     <a href="../action/excluirTarefa.php?id=<?php echo $tarefa['id'] ?>" class="btn btn-danger btn-sm " onclick="return confirm('Deseja excluir essa tarefa?');"><i class="far fa-trash-alt"></i></a>
+                                                </div>
 
+                                                <div class="btn-group" role="group" aria-label="Second group">
+                                                    <a href="../action/subir.php?id=<?php echo $tarefa['id'] ?>" class="btn btn-secondary btn-sm"><i class="fas fa-long-arrow-alt-up"></i></a>
+                                                    <a href="../action/subir.php?id=<?php echo $tarefa['id'] ?>" class="btn btn-secondary btn-sm"><i class="fas fa-long-arrow-alt-down"></i></a>
                                                 </div>
 
                                             </td>
@@ -186,7 +196,7 @@ $tarefas = $tarefaModel->buscarTodasTarefas();
                                 <label for="date">Custo</label>
                                 <input type="number" class="form-control" id="custo" name="custo" step="0.01" min="0.01">
                             </div>
-                    
+
                             <div class="form-group col-md-6">
                                 <label for="cpf">Data Limite</label>
                                 <input type="date" class="form-control" id="data" name="data">
@@ -209,14 +219,40 @@ $tarefas = $tarefaModel->buscarTodasTarefas();
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-    
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-    -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $(".sortable").sortable({
+                connectWith: ".sortable",
+                placeholder: 'dragHelper',
+                scroll: true,
+                revert: true,
+                cursor: "move",
+                update: function(event, ui) {
+                     var cad_id_item_list = $(this).sortable('toArray').toString();
+               	
+                     $.ajax({
+                         url: 'cad_ordenar_item.php',
+                         type: 'POST',
+                         data: {cad_id_item : cad_id_item_list},
+                         success: function(data) {
+                            
+                         }
+                     });
+                },
+                start: function( event, ui ) {
+                                                
+                },
+                stop: function( event, ui ) {
+                     
+                }
+            });
+        });
+    </script>
+
+
 
 </body>
 
