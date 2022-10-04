@@ -11,7 +11,7 @@ $tarefaModel = new Tarefa();
 $existeNomeTarefa = $tarefaModel->buscarPorTarefa($_POST['nomeTarefa']);
 if(count($existeNomeTarefa) > 0){
     $_SESSION['danger'] = 'Tarefa já existe!';
-    header('Location: http://localhost/testeFatto/app/view/listar.php');
+    header('Location: http://localhost/testeFatto/app/view/index.php');
 }else {
 
 $tarefa = [
@@ -25,6 +25,6 @@ $id = intval($_POST['id']);
 $tarefaModel->update($tarefa,$id);
 
 $_SESSION['success'] = 'Tarefa Atualizada com Sucesso!';
-header('Location: http://localhost/testeFatto/app/view/listar.php');
+header('Location: http://localhost/testeFatto/app/view/index.php');
 }
 ?>
