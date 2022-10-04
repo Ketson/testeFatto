@@ -4,14 +4,20 @@ error_reporting(E_ALL);
 session_start();
 date_default_timezone_set('America/Sao_Paulo');
 
-require_once('../model/Tarefa.php');
+$conexao = new mysqli ("localhost","root","","banco");
+	mysqli_set_charset($conexao, "utf-8");
 
-$tarefaModel = new tarefa();
+$id = $_POST['id'];
 
+$arr_item = explode(",",$id);
 
+$ordem = 1;
 
+foreach($arr_item as $arr_item){
+        $sql ="UPDATE tarefas SET ordemApresentacao = $ordem WHERE id = $arr_item";
 
+        $execute = $concexao->query($sql) or die(mysqli_error($conexao));
+    $ordem++;
+}
 
-$_SESSION['danger'] = 'A tarefa foi excluida!';
-header('Location: http://localhost/testeFatto/app/view/listar.php');
 ?>

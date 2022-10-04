@@ -112,8 +112,8 @@ $tarefas = $tarefaModel->buscarTodasTarefas();
                                                 </div>
 
                                                 <div class="btn-group" role="group" aria-label="Second group">
-                                                    <a href="../action/subir.php?id=<?php echo $tarefa['id'] ?>" class="btn btn-secondary btn-sm"><i class="fas fa-long-arrow-alt-up"></i></a>
-                                                    <a href="../action/subir.php?id=<?php echo $tarefa['id'] ?>" class="btn btn-secondary btn-sm"><i class="fas fa-long-arrow-alt-down"></i></a>
+                                                    <a href="" class="btn btn-secondary btn-sm"><i class="fas fa-long-arrow-alt-up"></i></a>
+                                                    <a href="" class="btn btn-secondary btn-sm"><i class="fas fa-long-arrow-alt-down"></i></a>
                                                 </div>
 
                                             </td>
@@ -231,12 +231,12 @@ $tarefas = $tarefaModel->buscarTodasTarefas();
                 revert: true,
                 cursor: "move",
                 update: function(event, ui) {
-                     var cad_id_item_list = $(this).sortable('toArray').toString();
+                     var id = $(this).sortable('toArray').toString();
                	
                      $.ajax({
-                         url: 'cad_ordenar_item.php',
+                         url: 'subir.php',
                          type: 'POST',
-                         data: {cad_id_item : cad_id_item_list},
+                         data: {id : id},
                          success: function(data) {
                             
                          }
