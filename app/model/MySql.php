@@ -14,10 +14,10 @@ class MySql{
 	public function __construct($tabela) {
 
         //Configurando o acesso ao banco de dados
-        $this->ipHost = '127.0.0.1';
-        $this->nomeBanco = 'banco';
-        $this->user = 'root';
-        $this->password = '';
+        $this->ipHost = 'us-cdbr-east-06.cleardb.net';
+        $this->nomeBanco = 'heroku_ca59e8b4e18133e';
+        $this->user = 'b13b4a5ec73186';
+        $this->password = '705eb6ea';
         $this->tabela = $tabela;
 
         //Conectando ao banco de dados
