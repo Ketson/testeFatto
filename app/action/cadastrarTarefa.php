@@ -20,7 +20,7 @@ if($_POST['nomeTarefa'] == "" || $_POST['custo'] == "" || $_POST['data'] == ""){
 $existeNomeTarefa = $tarefaModel->buscarPorTarefa($_POST['nomeTarefa']);
 if(count($existeNomeTarefa) > 0){
     $_SESSION['danger'] = 'Tarefa já existe!';
-    header('Location: http://localhost/testeFatto/app/view/index.php');
+    header('Location: http://localhost/testeFatto/');
 
 }else {
 
@@ -34,7 +34,7 @@ $arrayTarefa = [
 $tarefaModel->cadastrarTarefa($arrayTarefa);
 
 $_SESSION['success'] = 'Tarefa Cadastrada com Sucesso!';
-header('Location: http://localhost/testeFatto/app/view/index.php');
+header('Location: http://localhost/testeFatto/');
 
 }
 ?>

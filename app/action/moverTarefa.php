@@ -17,5 +17,5 @@ if (isset($_POST['moverParaCima'])) {
     $tarefa->moverParaBaixo($id);
 }
 
-header('Location: http://localhost/testeFatto/app/view/index.php'); // Redireciona de volta para a página de tarefas
+header('Location: http://localhost/testeFatto/'); // Redireciona de volta para a página de tarefas
 exit;

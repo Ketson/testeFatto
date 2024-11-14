@@ -12,4 +12,4 @@ $tarefa = $tarefaModel->buscarPorTarefaId($_GET['id']);
 $tarefaModel->deletarTarefaPorId($_GET['id']);
 
 $_SESSION['danger'] = 'A tarefa foi excluida!';
-header('Location: http://localhost/testeFatto/app/view/index.php');
+header('Location: http://localhost/testeFatto/');

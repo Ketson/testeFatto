@@ -3,7 +3,7 @@ ini_set('display_errors', true);
 error_reporting(E_ALL);
 session_start();
 
-require_once('../model/Tarefa.php');
+require_once('./app/model/Tarefa.php');
 
 $tarefaModel = new Tarefa();
 
@@ -45,7 +45,7 @@ $tarefas = $tarefaModel->buscarTodasTarefas();
 
         <div class="row">
             <div class="col-12 pt-3">
-                <?php include('./components/alerts.php') ?>
+                <?php include('./app/view/components/alerts.php') ?>
 
                 <div class="card">
                     <div class="card-header">
@@ -94,11 +94,11 @@ $tarefas = $tarefaModel->buscarTodasTarefas();
 
                                                 <div class="btn-group" role="group" aria-label="Exemplo básico">
                                                     <a class="btn btn-primary btn-sm" href="" data-toggle="modal" data-target="#editar<?= $tarefa['id'] ?>"><i class="fas fa-user-edit"></i></a>
-                                                    <a href="../action/excluirTarefa.php?id=<?php echo $tarefa['id'] ?>" class="btn btn-danger btn-sm " onclick="return confirm('Deseja excluir essa tarefa?');"><i class="far fa-trash-alt"></i></a>
+                                                    <a href="./app/action/excluirTarefa.php?id=<?php echo $tarefa['id'] ?>" class="btn btn-danger btn-sm " onclick="return confirm('Deseja excluir essa tarefa?');"><i class="far fa-trash-alt"></i></a>
                                                 </div>
                                                 <div class="btn-group" role="group" aria-label="Second group">
                                                     <!-- Formulário para Subir -->
-                                                    <form method="POST" action="../action/moverTarefa.php" style="display:inline;">
+                                                    <form method="POST" action="./app/action/moverTarefa.php" style="display:inline;">
                                                         <input type="hidden" name="id" value="<?= $tarefa['id'] ?>"> <!-- Substitua com o ID da tarefa -->
                                                         <input type="hidden" name="moverParaCima"=-=>
                                                         <button type="submit" class="btn btn-secondary btn-sm">
@@ -107,7 +107,7 @@ $tarefas = $tarefaModel->buscarTodasTarefas();
                                                     </form>
 
                                                     <!-- Formulário para Descer -->
-                                                    <form method="POST" action="../action/moverTarefa.php" style="display:inline;">
+                                                    <form method="POST" action="./app/action/moverTarefa.php" style="display:inline;">
                                                         <input type="hidden" name="id" value="<?= $tarefa['id'] ?>"> <!-- Substitua com o ID da tarefa -->
                                                         <input type="hidden" name="moverParaBaixo">
                                                         <button type="submit" class="btn btn-secondary btn-sm">
@@ -133,12 +133,12 @@ $tarefas = $tarefaModel->buscarTodasTarefas();
 
                                                 <div class="btn-group" role="group" aria-label="Second group">
                                                     <a class="btn btn-primary btn-sm" href="" data-toggle="modal" data-target="#editar<?= $tarefa['id'] ?>"><i class="fas fa-user-edit"></i></a>
-                                                    <a href="../action/excluirTarefa.php?id=<?php echo $tarefa['id'] ?>" class="btn btn-danger btn-sm " onclick="return confirm('Deseja excluir essa tarefa?');"><i class="far fa-trash-alt"></i></a>
+                                                    <a href="./app/action/excluirTarefa.php?id=<?php echo $tarefa['id'] ?>" class="btn btn-danger btn-sm " onclick="return confirm('Deseja excluir essa tarefa?');"><i class="far fa-trash-alt"></i></a>
                                                 </div>
 
                                                 <div class="btn-group" role="group" aria-label="Second group">
                                                     <!-- Formulário para Subir -->
-                                                    <form method="POST" action="../action/moverTarefa.php" style="display:inline;">
+                                                    <form method="POST" action="./app/action/moverTarefa.php" style="display:inline;">
                                                         <input type="hidden" name="id" value="<?= $tarefa['id'] ?>"> <!-- Substitua com o ID da tarefa -->
                                                         <input type="hidden" name="moverParaCima"=-=>
                                                         <button type="submit" class="btn btn-secondary btn-sm">
@@ -147,7 +147,7 @@ $tarefas = $tarefaModel->buscarTodasTarefas();
                                                     </form>
 
                                                     <!-- Formulário para Descer -->
-                                                    <form method="POST" action="../action/moverTarefa.php" style="display:inline;">
+                                                    <form method="POST" action="./app/action/moverTarefa.php" style="display:inline;">
                                                         <input type="hidden" name="id" value="<?= $tarefa['id'] ?>"> <!-- Substitua com o ID da tarefa -->
                                                         <input type="hidden" name="moverParaBaixo">
                                                         <button type="submit" class="btn btn-secondary btn-sm">
@@ -186,7 +186,7 @@ $tarefas = $tarefaModel->buscarTodasTarefas();
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="../action/atualizarTarefa.php" method="POST">
+                    <form action="./app/action/atualizarTarefa.php" method="POST">
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="nome">Nome</label>
@@ -226,8 +226,9 @@ $tarefas = $tarefaModel->buscarTodasTarefas();
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="../action/cadastrarTarefa.php" method="POST">
+                <form action="./app/action/cadastrarTarefa.php" method="POST">
                     <div class="modal-body">
+                        
                         <div class="form-group">
                             <label for="nome">Nome</label>
                             <input type="text" class="form-control" id="nomeTarefa" name="nomeTarefa">
@@ -292,7 +293,7 @@ $tarefas = $tarefaModel->buscarTodasTarefas();
                     console.log(ordem);
                     // Enviando a nova ordem via AJAX para o servidor
                     $.ajax({
-                        url: '../action/atualizar_ordem.php', // Arquivo que processa a nova ordem
+                        url: './app/action/atualizar_ordem.php', // Arquivo que processa a nova ordem
                         type: 'POST',
                         data: {
                             ordem: ordem
@@ -320,7 +321,7 @@ $tarefas = $tarefaModel->buscarTodasTarefas();
                 if (prevRow.length > 0) { // Verifica se há uma linha anterior
                     // Atualiza a ordem no banco de dados
                     $.ajax({
-                        url: '../action/moverTarefa.php', // Arquivo que processa a movimentação
+                        url: './app/action/moverTarefa.php', // Arquivo que processa a movimentação
                         type: 'POST',
                         data: {
                             idTarefa: idTarefa,
@@ -347,7 +348,7 @@ $tarefas = $tarefaModel->buscarTodasTarefas();
                 if (nextRow.length > 0) { // Verifica se há uma linha seguinte
                     // Atualiza a ordem no banco de dados
                     $.ajax({
-                        url: '../action/moverTarefa.php', // Arquivo que processa a movimentação
+                        url: './app/action/moverTarefa.php', // Arquivo que processa a movimentação
                         type: 'POST',
                         data: {
                             idTarefa: idTarefa,
