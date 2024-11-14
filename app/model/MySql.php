@@ -17,10 +17,10 @@ class MySql{
 
 
         //Configurando o acesso ao banco de dados
-        $this->ipHost = 'localhost';
-        $this->nomeBanco = 'banco';
-        $this->user = 'root';
-        $this->password = '';
+        $this->ipHost = 'l6slz5o3eduzatkw.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
+        $this->nomeBanco = 'ad3n9j9vfyjp0m8v';
+        $this->user = 'vxo9rvdb9e1wem4f';
+        $this->password = 'fvz5hck6j05uti6v';
         $this->tabela = $tabela;
 
         //Conectando ao banco de dados
