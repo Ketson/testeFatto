@@ -17,7 +17,7 @@ class MySql{
 
         
         //Configurando o acesso ao banco de dados
-        $this->ipHost = 'y0nkiij6humroewt.cbetxkdyhwsb.us-east-1.rds.amazonaws.com	';
+        $this->ipHost = 'y0nkiij6humroewt.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
         $this->nomeBanco = 'pnno0bmpkujwx7g9';
         $this->user = 'y5x4p9x1ubiwm47s';
         $this->password = 'yvp7eyinrgjv69qq';
