@@ -15,12 +15,12 @@ class MySql{
 
 	public function __construct($tabela) {
 
-
+        
         //Configurando o acesso ao banco de dados
-        $this->ipHost = 'l6slz5o3eduzatkw.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
-        $this->nomeBanco = 'ad3n9j9vfyjp0m8v';
-        $this->user = 'vxo9rvdb9e1wem4f';
-        $this->password = 'fvz5hck6j05uti6v';
+        $this->ipHost = 'y0nkiij6humroewt.cbetxkdyhwsb.us-east-1.rds.amazonaws.com	';
+        $this->nomeBanco = 'pnno0bmpkujwx7g9';
+        $this->user = 'y5x4p9x1ubiwm47s';
+        $this->password = 'yvp7eyinrgjv69qq';
         $this->tabela = $tabela;
 
         //Conectando ao banco de dados
